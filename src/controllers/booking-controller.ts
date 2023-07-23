@@ -8,3 +8,8 @@ export async function postBooking(req: AuthenticatedRequest, res: Response) {
   const result = await bookingService.newBooking(roomId, req.userId);
   res.send(result);
 }
+
+export async function getBooking(req: AuthenticatedRequest, res: Response) {
+  const result = await bookingService.getBooking(req.userId);
+  res.send(result);
+}
