@@ -7,9 +7,16 @@ export function NoVacancyError(): ApplicationError {
   };
 }
 
-export function BussinesRuleError(): ApplicationError {
+export function UserUnableToMakeBooking(): ApplicationError {
   return {
     name: 'BussinesRuleError',
     message: 'Ticket is online, has no hotel included or is not paid',
+  };
+}
+
+export function NoBookingFoundForUser(): ApplicationError {
+  return {
+    name: 'BussinesRuleError',
+    message: 'User has no booking to modify',
   };
 }

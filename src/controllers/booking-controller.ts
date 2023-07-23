@@ -13,3 +13,10 @@ export async function getBooking(req: AuthenticatedRequest, res: Response) {
   const result = await bookingService.getBooking(req.userId);
   res.send(result);
 }
+
+export async function modifyBooking(req: AuthenticatedRequest, res: Response) {
+  const roomId: number = req.body.roomId;
+
+  const result = await bookingService.changeBooking(roomId, req.userId);
+  res.send(result);
+}

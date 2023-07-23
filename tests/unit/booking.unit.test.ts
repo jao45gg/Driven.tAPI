@@ -97,3 +97,24 @@ describe('POST booking unit tests', () => {
     });
   });
 });
+
+describe('PUT booking unit tests', () => {
+  it('should throw an error when user has no booking', () => {
+    jest.spyOn(roomsRepository, 'getRoomById').mockImplementationOnce((): any => {
+      return true;
+    });
+    jest.spyOn(bookingRepository, 'getBookingByRoomId').mockImplementationOnce((): any => {
+      return false;
+    });
+    jest.spyOn(bookingRepository, 'getBookingByUserId').mockImplementationOnce((): any => {
+      return false;
+    });
+
+    const promise = bookingService.changeBooking(1, 2);
+
+    expect(promise).rejects.toEqual({
+      name: 'BussinesRuleError',
+      message: 'User has no booking to modify',
+    });
+  });
+});
